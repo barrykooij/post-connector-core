@@ -368,6 +368,15 @@ class SP_Admin_Menu {
 							</td>
 						</tr>
 
+                        <?php
+                        /**
+                         * Action: 'pc_connection_edit_form_display_linked_children' - Allow adding custom fields to display linked children section
+                         *
+                         * @api SP_Connection $connection The Connection that is currently edited
+                         */
+                        do_action( 'pc_connection_edit_form_display_linked_children', $connection );
+                        ?>
+
 						</tbody>
 					</table>
 
