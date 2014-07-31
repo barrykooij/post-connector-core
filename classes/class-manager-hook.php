@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class SP_Manager_Hook {
 
-	private $hooks_dir;
+	private $hook_dir;
 	private static $hooks;
 
 	public function __construct( $hook_dir  ) {
