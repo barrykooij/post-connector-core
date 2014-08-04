@@ -4,5 +4,10 @@
 	"dist": {
 		"url": "https://github.com/barrykooij/post-connector-core/archive/master.zip",
 		"type": "zip"
+	},
+	"autoload": {
+		"classmap": [
+            "classes/",
+		]
 	}
 }
