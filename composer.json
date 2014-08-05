@@ -1,0 +1,21 @@
+{
+	"name"       : "barrykooij/post-connector-core",
+	"description": "Post Connector core library",
+	"keywords"   : ["wordpress"],
+	"homepage"   : "https://www.post-connector.com/",
+	"license"    : "GPL-2.0+",
+	"authors"    : [
+		{
+			"name"    : "Barry Kooij",
+			"email"   : "git@barrykooij.nl",
+			"homepage": "http://www.barrykooij.com/"
+		}
+	],
+	"support"    : {
+		"issues": "https://github.com/barrykooij/post-connector-core/issues",
+		"source": "https://github.com/barrykooij/post-connector-core"
+	},
+	"autoload"   : {
+		"classmap": ["classes/class-post-connector-core.php"]
+	}
+}
