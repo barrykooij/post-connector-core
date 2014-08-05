@@ -1,0 +1,13 @@
+{
+	"name": "barrykooij/post-connector-core",
+	"version": "1.0.1",
+	"dist": {
+		"url": "https://github.com/barrykooij/post-connector-core/archive/master.zip",
+		"type": "zip"
+	},
+	"autoload": {
+		"classmap": [
+            "classes/"
+		]
+	}
+}
