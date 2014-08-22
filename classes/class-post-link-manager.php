@@ -287,6 +287,11 @@ class SP_Post_Link_Manager {
 	 * @return array
 	 */
 	public function get_parents( $pt_slug, $child_id ) {
+		global $post;
+
+		// opost
+		$o_post = $post;
+
 		// Do WP_Query
 		$link_query = new WP_Query( $this->create_link_args( $pt_slug, SP_Constants::PM_CHILD, $child_id ) );
 
@@ -299,6 +304,9 @@ class SP_Post_Link_Manager {
 
 		// Reset global post variables
 		wp_reset_postdata();
+
+		// Set back
+		$post = $o_post;
 
 		return $parents;
 	}
