@@ -16,7 +16,7 @@ class SP_Hook_Admin_Scripts extends SP_Hook {
 			// Load PTL JS
 			wp_enqueue_script(
 				'post-connector-ptl',
-				plugins_url( 'core/assets/js/post-connector-ptl.js', Post_Connector::get_plugin_file() ),
+				plugins_url( 'core/assets/js/post-connector-ptl' . ( ( ! SCRIPT_DEBUG ) ? '.min' : '' ) . '.js', Post_Connector::get_plugin_file() ),
 				array( 'jquery' )
 			);
 
@@ -30,7 +30,7 @@ class SP_Hook_Admin_Scripts extends SP_Hook {
 			// Load PTL JS
 			wp_enqueue_script(
 				'pc-connection-edit',
-				plugins_url( 'core/assets/js/post-connector-connection-edit.js', Post_Connector::get_plugin_file() ),
+				plugins_url( 'core/assets/js/post-connector-connection-edit' . ( ( ! SCRIPT_DEBUG ) ? '.min' : '' ) . '.js', Post_Connector::get_plugin_file() ),
 				array( 'jquery' )
 			);
 
@@ -44,7 +44,7 @@ class SP_Hook_Admin_Scripts extends SP_Hook {
 			// Load PL JS
 			wp_enqueue_script(
 				'post-connector-pl',
-				plugins_url( 'core/assets/js/post-connector-pl.js', Post_Connector::get_plugin_file() ),
+				plugins_url( 'core/assets/js/post-connector-pl' . ( ( ! SCRIPT_DEBUG ) ? '.min' : '' ) . '.js', Post_Connector::get_plugin_file() ),
 				array( 'jquery', 'jquery-ui-sortable' )
 			);
 
@@ -58,7 +58,7 @@ class SP_Hook_Admin_Scripts extends SP_Hook {
 			// Load Widget & Shortcode script
 			wp_enqueue_script(
 				'post-connector-widget-shortcode',
-				plugins_url( 'core/assets/js/post-connector-widget-shortcode.js', Post_Connector::get_plugin_file() ),
+				plugins_url( 'core/assets/js/post-connector-widget-shortcode' . ( ( ! SCRIPT_DEBUG ) ? '.min' : '' ) . '.js', Post_Connector::get_plugin_file() ),
 				array( 'jquery' )
 			);
 
@@ -69,7 +69,7 @@ class SP_Hook_Admin_Scripts extends SP_Hook {
 		// CSS
 		wp_enqueue_style(
 			'post_connector',
-			plugins_url( 'core/assets/css/post-connector.css', Post_Connector::get_plugin_file() )
+			plugins_url( 'core/assets/css/post-connector' . ( ( ! SCRIPT_DEBUG ) ? '.min' : '' ) . '.css', Post_Connector::get_plugin_file() )
 		);
 	}
 }
