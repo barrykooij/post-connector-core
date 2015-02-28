@@ -9,8 +9,8 @@ class SP_Manager_Widget {
 	private $dir;
 	private static $instances;
 
-	public function __construct() {
-		$this->dir = plugin_dir_path( __FILE__ ) . 'widgets/';
+	public function __construct( $dir ) {
+		$this->dir =$dir;
 	}
 
 	/**

@@ -47,8 +47,8 @@ class Post_Connector_Core {
 		$manager_shortcode = new SP_Manager_Shortcode();
 		$manager_shortcode->load_shortcodes();
 
-		// Shortcodes
-		$manager_widget = new SP_Manager_Widget();
+		// Widgets
+		$manager_widget = new SP_Manager_Widget(  plugin_dir_path( __FILE__ ) . 'widgets/' );
 		$manager_widget->load();
 
 		// Menu init
