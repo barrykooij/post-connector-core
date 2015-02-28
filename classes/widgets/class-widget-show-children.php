@@ -92,7 +92,7 @@ class SP_Widget_Show_Children extends WP_Widget {
 
 		$selected_link = null;
 
-		echo "<div class='sp_showchilds_ajax'>\n";
+		echo "<div class='pc_ajax_child'>\n";
 
 		wp_nonce_field( 'sp_ajax_sc_gpp', 'sp_widget_child_nonce' );
 
