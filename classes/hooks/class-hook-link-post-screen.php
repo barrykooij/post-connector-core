@@ -14,7 +14,10 @@ class SP_Hook_Link_Post_Screen extends SP_Hook {
 		$this->handle_bulk_link();
 
 		// Add Page
-		add_submenu_page( null, 'LinkPostScreen', 'LinkPostScreen', 'edit_posts', 'link_post_screen', array( $this, 'link_post_screen_content' ) );
+		$screen_hook = add_submenu_page( null, 'LinkPostScreen', 'LinkPostScreen', 'edit_posts', 'link_post_screen', array( $this, 'link_post_screen_content' ) );
+
+		// Init Screen
+		add_action( 'load-' . $screen_hook, array( $this, 'init_screen' ) );
 	}
 
 	/**
@@ -145,6 +148,13 @@ class SP_Hook_Link_Post_Screen extends SP_Hook {
 
 		}
 
+	}
+
+	/**
+	 * Init screen, add screen option to screen
+	 */
+	public function init_screen() {
+		add_screen_option( 'per_page', array( 'label' => 'Posts', 'default' => 20, 'option' => 'post_connector_per_page' ) );
 	}
 
 	/**
