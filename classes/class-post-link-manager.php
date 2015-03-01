@@ -8,9 +8,6 @@ class SP_Post_Link_Manager {
 
 	private $temp_child_order;
 
-	public function __construct() {
-	}
-
 	/**
 	 * Create query arguments used to fetch links
 	 *
@@ -370,42 +367,33 @@ class SP_Post_Link_Manager {
 	}
 
 	/**
-	 * Generate the children list
+	 * Generate the generic list of posts
 	 *
-	 * @param        $slug
-	 * @param        $parent
-	 * @param        $link
-	 * @param        $excerpt
+	 * @param array $posts
+	 * @param string $slug
+	 * @param string $link
+	 * @param string $excerpt
 	 * @param string $header_tag
 	 *
 	 * @return string
 	 */
-	public function generate_children_list( $slug, $parent, $link, $excerpt, $header_tag = 'b' ) {
-
-		// Make the header tag filterable
-		$header_tag = apply_filters( 'pc_children_list_header_tag', $header_tag );
-
-		// Get the children
-		$children = $this->get_children( $slug, $parent );
-
-		// Returned string
-		$return = "";
-
-		if ( count( $children ) > 0 ) {
+	protected function generate_list( $posts, $slug, $link, $excerpt, $header_tag ) {
+		$return = '';
+		if ( count( $posts ) > 0 ) {
 			$return .= "<div class='pc-post-list pc-{$slug}'>\n";
 
 			$return .= "<ul class='subposts_show-childs subposts_slug_{$slug}'>\n";
-			foreach ( $children as $child ) {
+			foreach ( $posts as $post ) {
 
 				// Setup post data
-				setup_postdata( $child );
+				setup_postdata( $post );
 
-				$return .= "<li class='subposts_child subposts_{$child->ID}'>";
+				$return .= "<li class='subposts_child subposts_{$post->ID}'>";
 				$return .= "<{$header_tag}>";
 				if ( $link == 'true' ) {
-					$return .= "<a href='" . get_permalink( $child->ID ) . "'>";
+					$return .= "<a href='" . get_permalink( $post->ID ) . "'>";
 				}
-				$return .= $child->post_title;
+				$return .= $post->post_title;
 				if ( $link == 'true' ) {
 					$return .= "</a>";
 				}
@@ -426,10 +414,34 @@ class SP_Post_Link_Manager {
 			$return .= "</div>\n";
 		}
 
+		return $return;
+	}
+
+	/**
+	 * Generate the children list
+	 *
+	 * @param string $slug
+	 * @param string $parent
+	 * @param string $link
+	 * @param string $excerpt
+	 * @param string $header_tag
+	 *
+	 * @return string
+	 */
+	public function generate_children_list( $slug, $parent, $link, $excerpt, $header_tag = 'b' ) {
+
+		// Make the header tag filterable
+		$header_tag = apply_filters( 'pc_children_list_header_tag', $header_tag );
+
+		// Get the children
+		$children = $this->get_children( $slug, $parent );
+
+		// Returned string
+		$return = $this->generate_list( $children, $slug, $link, $excerpt, $header_tag );
+
 		// Restore global $post of main query
 		wp_reset_postdata();
 
 		return $return;
 	}
-
 }
