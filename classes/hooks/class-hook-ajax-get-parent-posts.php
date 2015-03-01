@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 class SP_Hook_Ajax_Get_Parent_Posts extends SP_Hook {
-	protected $tag = 'wp_ajax_get_parent_posts'; // @todo prefix the AJAX tag
+	protected $tag = 'wp_ajax_pc_get_parent_posts';
 
 	public function run() {
 		global $wpdb;
@@ -43,10 +43,9 @@ class SP_Hook_Ajax_Get_Parent_Posts extends SP_Hook {
 			}
 		}
 
-		$response = json_encode( $json_posts );
-		header( 'Content-Type: application/json' );
-		echo $response;
+		// Send the JSON
+		wp_send_json( $json_posts );
 
-		exit;
+		exit; // Better safe than sorry lol
 	}
 }
