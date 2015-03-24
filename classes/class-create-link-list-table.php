@@ -103,6 +103,7 @@ class SP_Create_Link_List_Table extends WP_List_Table {
 		// Get per page
 		$screen   = get_current_screen();
 		$per_page = absint( get_user_meta( get_current_user_id(), $screen->get_option( 'per_page', 'option' ), true ) );
+		$per_page = ( ( $per_page > 0 ) ? $per_page : 20 );
 		$paged    = absint( isset( $_GET['paged'] ) ? $_GET['paged'] : 1 );
 		$orderby  = isset( $_GET['orderby'] ) ? $_GET['orderby'] : 'title';
 		$order    = isset( $_GET['order'] ) ? $_GET['order'] : 'asc';
@@ -130,8 +131,8 @@ class SP_Create_Link_List_Table extends WP_List_Table {
 
 		// Pagination
 		$this->set_pagination_args( array(
-			'total_items' => $post_query->found_posts,                  //WE have to calculate the total number of items
-			'per_page'    => $per_page                     //WE have to determine how many items to show on a page
+			'total_items' => $post_query->found_posts,
+			'per_page'    => $per_page
 		) );
 
 		// Set items
