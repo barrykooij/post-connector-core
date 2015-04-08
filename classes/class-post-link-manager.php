@@ -378,6 +378,10 @@ class SP_Post_Link_Manager {
 	 * @return string
 	 */
 	protected function generate_list( $posts, $slug, $link, $excerpt, $header_tag ) {
+		global $post;
+
+		$o_post = $post;
+
 		$return = '';
 		if ( count( $posts ) > 0 ) {
 			$return .= "<div class='pc-post-list pc-{$slug}'>\n";
@@ -413,6 +417,9 @@ class SP_Post_Link_Manager {
 
 			$return .= "</div>\n";
 		}
+
+		$post = $o_post;
+		wp_reset_postdata();
 
 		return $return;
 	}
