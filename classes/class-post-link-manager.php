@@ -372,15 +372,18 @@ class SP_Post_Link_Manager {
 	 * @param array $posts
 	 * @param string $slug
 	 * @param string $link
-	 * @param string $excerpt
+	 * @param string $display_excerpt
+	 * @param string $display_image
 	 * @param string $header_tag
 	 *
 	 * @return string
 	 */
-	protected function generate_list( $posts, $slug, $link, $excerpt, $header_tag ) {
-		global $post;
+	protected function generate_list( $posts, $slug, $link, $display_excerpt, $display_image, $header_tag ) {
 
-		$o_post = $post;
+		// String to bool, blame backwards compatibility
+		if ( 'false' == $display_image ) {
+			$display_image = false;
+		}
 
 		$return = '';
 		if ( count( $posts ) > 0 ) {
@@ -389,10 +392,24 @@ class SP_Post_Link_Manager {
 			$return .= "<ul class='subposts_show-childs subposts_slug_{$slug}'>\n";
 			foreach ( $posts as $post ) {
 
-				// Setup post data
-				setup_postdata( $post );
-
 				$return .= "<li class='subposts_child subposts_{$post->ID}'>";
+
+				if ( true == $display_image ) {
+					if ( has_post_thumbnail( $post->ID ) ) {
+
+						/**
+						 * Filter: 'pc_apdc_thumbnail_size' - Allows changing the thumbnail size of the thumbnail in de APDC section
+						 *
+						 * @api String $thumbnail_size The current/default thumbnail size.
+						 */
+						$thumb_size = apply_filters( 'pc_apdc_thumbnail_size', 'post-thumbnail' );
+
+						$return .= "<a href='" . get_permalink( $post->ID ) . "'>";
+						$return .= get_the_post_thumbnail( $post->ID, $thumb_size );
+						$return .= "</a>";
+					}
+				}
+
 				$return .= "<{$header_tag}>";
 				if ( $link == 'true' ) {
 					$return .= "<a href='" . get_permalink( $post->ID ) . "'>";
@@ -404,8 +421,8 @@ class SP_Post_Link_Manager {
 				$return .= "</{$header_tag}>";
 
 				// Excerpt
-				if ( 'true' == $excerpt ) {
-					$the_excerpt = get_the_excerpt();
+				if ( true == $display_excerpt ) {
+					$the_excerpt = ( '' != $post->post_excerpt ) ? $post->post_excerpt : wp_trim_words( strip_tags( strip_shortcodes( $post->post_content ) ), apply_filters( 'excerpt_length', 20 ) );
 					if ( $the_excerpt != '' ) {
 						$return .= "<p>{$the_excerpt}</p>";
 					}
@@ -418,9 +435,6 @@ class SP_Post_Link_Manager {
 			$return .= "</div>\n";
 		}
 
-		$post = $o_post;
-		wp_reset_postdata();
-
 		return $return;
 	}
 
@@ -432,10 +446,11 @@ class SP_Post_Link_Manager {
 	 * @param string $link
 	 * @param string $excerpt
 	 * @param string $header_tag
+	 * @param bool $display_image
 	 *
 	 * @return string
 	 */
-	public function generate_children_list( $slug, $parent, $link, $excerpt, $header_tag = 'b' ) {
+	public function generate_children_list( $slug, $parent, $link, $excerpt, $header_tag = 'b', $display_image = false ) {
 
 		// Make the header tag filterable
 		$header_tag = apply_filters( 'pc_children_list_header_tag', $header_tag );
@@ -444,7 +459,7 @@ class SP_Post_Link_Manager {
 		$children = $this->get_children( $slug, $parent );
 
 		// Returned string
-		$return = $this->generate_list( $children, $slug, $link, $excerpt, $header_tag );
+		$return = $this->generate_list( $children, $slug, $link, $excerpt, $display_image, $header_tag );
 
 		// Restore global $post of main query
 		wp_reset_postdata();
