@@ -422,7 +422,7 @@ class SP_Post_Link_Manager {
 
 				// Excerpt
 				if ( true == $display_excerpt ) {
-					$the_excerpt = ( '' != $post->post_excerpt ) ? $post->post_excerpt : wp_trim_words( strip_tags( strip_shortcodes( $post->post_content ) ), apply_filters( 'excerpt_length', 20 ) );
+					$the_excerpt = ( '' != $post->post_excerpt ) ? $post->post_excerpt : wp_trim_words( strip_tags( strip_shortcodes( $post->post_content ) ), apply_filters( 'pc_list_excerpt_length', apply_filters( 'excerpt_length', 20 ) ) );
 					if ( $the_excerpt != '' ) {
 						$return .= "<p>{$the_excerpt}</p>";
 					}
