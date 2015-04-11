@@ -11,6 +11,7 @@ class SP_Shortcode_Show_Children extends SP_Shortcode {
 			'parent'  => null,
 			'link'    => 'true',
 			'excerpt' => 'true',
+			'image' => 'false'
 	);
 
 	public function run( $atts ) {
@@ -21,12 +22,12 @@ class SP_Shortcode_Show_Children extends SP_Shortcode {
 			return;
 		}
 
-		if ( $parent === null ) {
+		if ( null === $parent ) {
 			$parent = get_the_ID();
 		}
 
 		$post_link_manager = new SP_Post_Link_Manager();
 
-		return $post_link_manager->generate_children_list( $slug, $parent, $link, $excerpt );
+		return $post_link_manager->generate_children_list( $slug, $parent, $link, $excerpt, 'b', $image );
 	}
 }
