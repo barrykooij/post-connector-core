@@ -3,8 +3,8 @@
 abstract class SP_Constants_Core {
 
 	// Plugin meta data
-	const PLUGIN_VERSION_NAME = '1.0.3';
-	const PLUGIN_VERSION_CODE = '3';
+	const PLUGIN_VERSION_NAME = '1.0.4';
+	const PLUGIN_VERSION_CODE = '4';
 	const PLUGIN_AUTHOR = 'Barry Kooij';
 
 	// Custom Post Type
