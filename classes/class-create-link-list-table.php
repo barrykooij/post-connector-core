@@ -49,7 +49,7 @@ class SP_Create_Link_List_Table extends WP_List_Table {
 		$new_views = array();
 
 		foreach ( $views_arr as $key => $val ) {
-			$new_views[$key] = "<a href='" . add_query_arg( array( 'pc-view' => $key, 'paged' => 1 ) ) . "'" . ( ( $current == $key ) ? " class='current'" : "" ) . ">{$val}</a>";
+			$new_views[$key] = "<a href='" . esc_url( add_query_arg( array( 'pc-view' => $key, 'paged' => 1 ) ) ) . "'" . ( ( $current == $key ) ? " class='current'" : "" ) . ">{$val}</a>";
 		}
 
 		return $new_views;
