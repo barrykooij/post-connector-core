@@ -381,6 +381,10 @@ class SP_Post_Link_Manager {
 	protected function generate_list( $posts, $slug, $link, $display_excerpt, $display_image, $header_tag ) {
 
 		// String to bool, blame backwards compatibility
+		if ( 'false' == $display_excerpt ) {
+			$display_excerpt = false;
+		}
+
 		if ( 'false' == $display_image ) {
 			$display_image = false;
 		}
