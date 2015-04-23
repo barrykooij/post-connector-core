@@ -116,6 +116,7 @@ class SP_Create_Link_List_Table extends WP_List_Table {
 			'suppress_filters' => false,
 			'orderby'          => $orderby,
 			'order'            => $order,
+			'post_status'      => apply_filters( 'pc_manual_link_post_statuses' , array( 'publish', 'private' ) ),
 		) );
 
 		// Format data for table
