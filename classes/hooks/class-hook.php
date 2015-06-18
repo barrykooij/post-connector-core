@@ -13,8 +13,6 @@ abstract class SP_Hook {
 	 * @access public
 	 *
 	 * @param mixed $tag (default: null)
-	 *
-	 * @return void
 	 */
 	public function __construct() {
 		$this->register();
@@ -33,6 +31,15 @@ abstract class SP_Hook {
 		}
 
 		add_action( $this->tag, array( $this, 'run' ), $this->priority, $this->args );
+	}
+
+	/**
+	 * Return filter priority
+	 *
+	 * @return int
+	 */
+	public function get_priority() {
+		return $this->priority;
 	}
 
 }

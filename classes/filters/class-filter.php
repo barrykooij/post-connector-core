@@ -15,8 +15,6 @@ abstract class SP_Filter {
 	 * @access public
 	 *
 	 * @param mixed $tag (default: null)
-	 *
-	 * @return void
 	 */
 	public function __construct() {
 		$this->register();
@@ -35,6 +33,15 @@ abstract class SP_Filter {
 		}
 
 		add_filter( $this->tag, array( $this, 'run' ), $this->priority, $this->args );
+	}
+
+	/**
+	 * Return filter priority
+	 *
+	 * @return int
+	 */
+	public function get_priority() {
+		return $this->priority;
 	}
 
 }

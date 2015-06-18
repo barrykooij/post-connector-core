@@ -41,9 +41,9 @@ class SP_Manager_Hook {
 	 *
 	 * @param $class_name
 	 *
-	 * @return Hook
+	 * @return SP_Hook
 	 */
-	public function get_hook_instance( $class_name ) {
+	public static function get_hook_object( $class_name ) {
 		if ( isset( self::$hooks[$class_name] ) ) {
 			return self::$hooks[$class_name];
 		}

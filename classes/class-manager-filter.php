@@ -55,11 +55,11 @@ class SP_Manager_Filter {
 	 *
 	 * @param $class_name
 	 *
-	 * @return Hook
+	 * @return SP_Filter
 	 */
-	public function get_hook_instance( $class_name ) {
-		if ( isset( self::$hooks[$class_name] ) ) {
-			return self::$hooks[$class_name];
+	public static function get_filter_object( $class_name ) {
+		if ( isset( self::$filters[$class_name] ) ) {
+			return self::$filters[$class_name];
 		}
 
 		return null;
