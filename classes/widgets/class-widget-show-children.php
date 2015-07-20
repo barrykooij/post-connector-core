@@ -61,7 +61,7 @@ class SP_Widget_Show_Children extends WP_Widget {
 		$post_link_manager = new SP_Post_Link_Manager();
 
 		// Generate the widget content
-		$widget_content = $post_link_manager->generate_children_list( $connection->get_slug(), $instance['parent'], $instance['link'], $instance['excerpt'] );
+		$widget_content = $post_link_manager->generate_children_list( $connection->get_slug(), $instance['parent'], $instance['link'], $instance['excerpt'], 'b', $instance['thumbnail'] );
 
 		// Don't ouput the widget if there is no widget content
 		if ( '' == $widget_content ) {
@@ -82,6 +82,7 @@ class SP_Widget_Show_Children extends WP_Widget {
 		$instance['parent']   = ( $new_instance['parent'] == 'current' ) ? null : $new_instance['parent'];
 		$instance['link']     = ( $new_instance['link'] == 'false' ) ? false : true;
 		$instance['excerpt']  = ( $new_instance['excerpt'] == 'false' ) ? false : true;
+		$instance['thumbnail']  = ( $new_instance['thumbnail'] == 'false' ) ? false : true;
 
 		return $instance;
 	}
@@ -163,6 +164,14 @@ class SP_Widget_Show_Children extends WP_Widget {
 		echo '<select class="widefat" name="' . $this->get_field_name( 'excerpt' ) . '" id="' . $this->get_field_id( 'excerpt' ) . '" >';
 		echo '<option value="true"' . ( ( $instance['excerpt'] == true ) ? ' selected="selected"' : '' ) . '>Yes</option>';
 		echo '<option value="false"' . ( ( $instance['excerpt'] == false ) ? ' selected="selected"' : '' ) . '>No</option>';
+		echo '</select>';
+		echo "</p>\n";
+
+		echo "<p>";
+		echo '<label for="' . $this->get_field_id( 'thumbnail' ) . '">' . __( 'Display thumbnail', 'post-connector' ) . ':</label>';
+		echo '<select class="widefat" name="' . $this->get_field_name( 'thumbnail' ) . '" id="' . $this->get_field_id( 'thumbnail' ) . '" >';
+		echo '<option value="true"' . ( ( $instance['thumbnail'] == true ) ? ' selected="selected"' : '' ) . '>Yes</option>';
+		echo '<option value="false"' . ( ( $instance['thumbnail'] == false ) ? ' selected="selected"' : '' ) . '>No</option>';
 		echo '</select>';
 		echo "</p>\n";
 
