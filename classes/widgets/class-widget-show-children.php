@@ -7,11 +7,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class SP_Widget_Show_Children extends WP_Widget {
 
 	private $default_vars = array(
-		'title'    => '',
-		'postlink' => '',
-		'parent'   => '',
-		'link'     => true,
-		'excerpt'  => true
+		'title'     => '',
+		'postlink'  => '',
+		'parent'    => '',
+		'link'      => true,
+		'excerpt'   => true,
+		'thumbnail' => false
 	);
 
 	public function __construct() {
@@ -76,13 +77,13 @@ class SP_Widget_Show_Children extends WP_Widget {
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		$instance             = array();
-		$instance['title']    = strip_tags( $new_instance['title'] );
-		$instance['postlink'] = $new_instance['postlink'];
-		$instance['parent']   = ( $new_instance['parent'] == 'current' ) ? null : $new_instance['parent'];
-		$instance['link']     = ( $new_instance['link'] == 'false' ) ? false : true;
-		$instance['excerpt']  = ( $new_instance['excerpt'] == 'false' ) ? false : true;
-		$instance['thumbnail']  = ( $new_instance['thumbnail'] == 'false' ) ? false : true;
+		$instance              = array();
+		$instance['title']     = strip_tags( $new_instance['title'] );
+		$instance['postlink']  = $new_instance['postlink'];
+		$instance['parent']    = ( $new_instance['parent'] == 'current' ) ? null : $new_instance['parent'];
+		$instance['link']      = ( $new_instance['link'] == 'false' ) ? false : true;
+		$instance['excerpt']   = ( $new_instance['excerpt'] == 'false' ) ? false : true;
+		$instance['thumbnail'] = ( $new_instance['thumbnail'] == 'false' ) ? false : true;
 
 		return $instance;
 	}
