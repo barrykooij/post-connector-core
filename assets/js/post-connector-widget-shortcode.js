@@ -45,7 +45,7 @@ function PC_Update_Select( tgt, type ) {
 
         var instance = this;
 
-        var pc_action = ( 'parent' == this.type ) ? 'pc_get_child_posts' : 'pc_get_parent_posts';
+        var pc_action = ( 'parent' == this.type ) ? 'pc_get_parent_posts' : 'pc_get_child_posts';
 
         var opts = {
             url: ajaxurl,

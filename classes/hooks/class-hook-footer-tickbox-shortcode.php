@@ -13,7 +13,7 @@ class SP_Hook_Footer_Tickbox_Shortcode extends SP_Hook {
 			?>
 			<div id="sp_tb_shortcode" style="height: 500px; display:none;">
 				<div class="wrap">
-					<div>
+					<div class="pc_ajax_parent">
 						<div style="padding:15px 15px 0 15px;">
 							<h2><?php _e( 'Insert Post Connector show_children shortcode', 'post-connector' ); ?></h2>
 							<span><?php _e( 'Use the form below to generate a show_children shortcode.', 'post-connector' ); ?></span>

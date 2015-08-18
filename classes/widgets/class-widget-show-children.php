@@ -128,7 +128,7 @@ class SP_Widget_Show_Children extends WP_Widget {
 		echo "<p>";
 		echo '<label for="' . $this->get_field_id( 'parent' ) . '">' . __( 'Parent', 'post-connector' ) . ':</label>';
 
-		echo '<select class="widefat parent" name="' . $this->get_field_name( 'parent' ) . '" id="' . $this->get_field_id( 'parent' ) . '" >';
+		echo '<select class="widefat child" name="' . $this->get_field_name( 'parent' ) . '" id="' . $this->get_field_id( 'parent' ) . '" >';
 
 		if ( $selected_link != null ) {
 			$parent_posts = get_posts( array(
