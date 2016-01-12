@@ -29,7 +29,6 @@ class SP_Meta_Box_Manage {
 	 * @return void
 	 */
 	public function add_meta_box() {
-
 		// Add meta box to parent
 		add_meta_box(
 				'sp_metabox_manage_' . $this->connection->get_slug(),
