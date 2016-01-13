@@ -8,6 +8,7 @@ class SP_Hook_Footer_Tickbox_Shortcode extends SP_Hook {
 	protected $tag = 'admin_footer';
 
 	public function run( $post_id ) {
+
 		if ( in_array( basename( $_SERVER['SCRIPT_FILENAME'] ), array( 'post.php', 'page.php', 'page-new.php', 'post-new.php' ) ) ) {
 			add_thickbox();
 			?>

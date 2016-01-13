@@ -105,6 +105,8 @@ abstract class SP_Connection_Manager_Core {
 	 * @return array<SP_Connection>
 	 */
 	public function get_connections( $extra_args = array() ) {
+		global $post;
+		$old_post = $post; // wp_reset_postdata() won't work in backend
 
 		// It's not allowed to change the post_type arg
 		unset( $extra_args['post_type'] );
@@ -148,6 +150,8 @@ abstract class SP_Connection_Manager_Core {
 		}
 
 		wp_reset_postdata();
+
+		$post = $old_post; // reset because wp_reset_postdata() won't work in backend
 
 		return $connections;
 	}
