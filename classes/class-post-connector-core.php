@@ -28,7 +28,7 @@ class Post_Connector_Core {
 	public function init() {
 
 		// Load plugin textdomain
-		load_plugin_textdomain( 'post-connector', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'post-connector', false, dirname( plugin_basename( Post_Connector::get_plugin_file() ) ) . '/languages/' );
 
 		// Setup autoloader
 		require_once( self::get_core_dir() . '/classes/class-autoloader.php' );
