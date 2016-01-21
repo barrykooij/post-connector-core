@@ -10,7 +10,7 @@ class SP_Co_Hook_Sidebar extends SP_Hook {
 			<h3 class="pc-title"><?php _e( 'Post Connector Premium', 'post-connector' ); ?></h3>
 
 			<p><?php _e( "This plugin has an even better premium version, I am sure you will love it.", 'post-connector' ); ?></p>
-			<p><?php _e( "Pro features include related content suggestions, sortable post connections, backwards linking, a developer friendly API and priority support.", 'post-connector' ); ?></p>
+			<p><?php _e( "Pro features include sortable post connections, backwards linking, a developer friendly API and priority support.", 'post-connector' ); ?></p>
 			<p><?php printf( __( "%sMore information about Post Connector Premium »%s", 'post-connector' ), '<a href="https://www.post-connector.com/?utm_source=plugin&utm_medium=link&utm_campaign=upgrade-box" target="_blank">', '</a>' ); ?></p>
 		</div>
 
