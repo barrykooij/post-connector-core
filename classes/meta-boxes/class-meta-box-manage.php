@@ -32,7 +32,7 @@ class SP_Meta_Box_Manage {
 		// Add meta box to parent
 		add_meta_box(
 				'sp_metabox_manage_' . $this->connection->get_slug(),
-				$this->connection->get_title(),
+				apply_filters( 'pc_mb_manage_title', $this->connection->get_title(), $this->connection->get_slug(), $this->connection ),
 				array( $this, 'callback' ),
 				$this->connection->get_parent(),
 				'normal',
