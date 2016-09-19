@@ -176,7 +176,7 @@ class SP_Post_Link_Manager {
 		 * Check $extra_args for `posts_per_page`.
 		 * This is the only arg that should be added to link query instead of the child query
 		 */
-		if ( isset( $extra_args['posts_per_page'] ) ) {
+		if ( isset( $extra_args['posts_per_page'] ) && ( ! isset( $extra_args['order'] ) || ! isset( $extra_args['orderby'] ) ) ) {
 
 			// Set posts_per_page to link arguments
 			$link_args['posts_per_page'] = $extra_args['posts_per_page'];
@@ -219,11 +219,17 @@ class SP_Post_Link_Manager {
 			if ( count( $child_ids ) > 0 ) {
 				$child_id_values = array_values( $child_ids );
 				$child_post_type = get_post_type( array_shift( $child_id_values ) );
+				
+				// default child args
 				$child_args      = array(
 					'post_type'      => $child_post_type,
-					'posts_per_page' => - 1,
 					'post__in'       => $child_ids,
 				);
+
+				// add post per page -1 to $child_args if post_per_page doesn't exist in $extra_args
+				if ( ! isset( $extra_args[ 'posts_per_page' ] ) ) {
+					$child_args[ 'posts_per_page' ] = -1;
+				}			
 
 				// Extra arguments
 				$child_args = array_merge_recursive( $child_args, $extra_args );
