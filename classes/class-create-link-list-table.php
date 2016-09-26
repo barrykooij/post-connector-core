@@ -109,7 +109,7 @@ class SP_Create_Link_List_Table extends WP_List_Table {
 		$order    = isset( $_GET['order'] ) ? $_GET['order'] : 'asc';
 
 		// Get posts
-		$post_query = new WP_Query( array(
+		$post_query = new WP_Query( apply_filters( 'pc_manual_link_post_query_args', array(
 			'post_type'        => $this->post_type,
 			'posts_per_page'   => $per_page,
 			'paged'            => $paged,
@@ -117,7 +117,7 @@ class SP_Create_Link_List_Table extends WP_List_Table {
 			'orderby'          => $orderby,
 			'order'            => $order,
 			'post_status'      => apply_filters( 'pc_manual_link_post_statuses' , array( 'publish', 'private' ) ),
-		) );
+		) ) );
 
 		// Format data for table
 		if ( $post_query->have_posts() ) {
