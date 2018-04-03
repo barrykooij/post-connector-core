@@ -6,49 +6,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class SP_Manager_Widget {
 
-	private $dir;
-	private static $instances;
-
-	public function __construct( $dir ) {
-		$this->dir =$dir;
+	/**
+	 * Register SP_Widget_Show_Children widget
+	 */
+	public function register_show_children() {
+		register_widget( 'SP_Widget_Show_Children' );
 	}
 
 	/**
-	 * Load and set hooks
-	 *
-	 * @access public
-	 * @static
-	 * @return void
+	 * Register SP_Widget_Show_Parents widget
 	 */
-	public function load() {
-
-		foreach ( new DirectoryIterator( $this->dir ) as $file ) {
-			$file_name = $file->getFileName();
-
-			if ( ! $file->isDir() && ( strpos( $file->getFileName(), '.' ) !== 0 ) ) {
-
-				$class = SP_Class_Manager::format_class_name( $file->getFileName() );
-				add_action( 'widgets_init', create_function( '', 'register_widget( "' . $class . '" );' ) );
-				
-			}
-
-		}
-
-	}
-
-	/**
-	 * Return instance
-	 *
-	 * @param $class_name
-	 *
-	 * @return Hook
-	 */
-	public function get_instance( $class_name ) {
-		if ( isset( self::$instances[$class_name] ) ) {
-			return self::$instances[$class_name];
-		}
-
-		return null;
+	public function register_show_parents() {
+		register_widget( 'SP_Widget_Show_Parents' );
 	}
 
 }

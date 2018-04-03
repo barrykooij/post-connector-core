@@ -48,8 +48,8 @@ class Post_Connector_Core {
 		$manager_shortcode->load_shortcodes();
 
 		// Widgets
-		$manager_widget = new SP_Manager_Widget(  plugin_dir_path( __FILE__ ) . 'widgets/' );
-		$manager_widget->load();
+		$manager_widget = new SP_Manager_Widget();
+		add_action( 'widgets_init', array( $manager_widget, 'register_show_children' ) );
 
 		// Menu init
 		SP_Admin_Menu::get();
