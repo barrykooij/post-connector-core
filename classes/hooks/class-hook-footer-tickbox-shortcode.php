@@ -55,16 +55,16 @@ class SP_Hook_Footer_Tickbox_Shortcode extends SP_Hook {
 							echo "<p>";
 							echo '<label for="sp_sc_link">' . __( 'Make children clickable', 'post-connector' ) . ':</label>';
 							echo '<select class="widefat" name="sp_sc_link" id="sp_sc_link" >';
-							echo '<option value="true">Yes</option>';
-							echo '<option value="false">No</option>';
+							echo '<option value="true">' . __( 'Yes', 'post-connector' ) . '</option>';
+							echo '<option value="false">' . __( 'No', 'post-connector' ) . '</option>';
 							echo '</select>';
 							echo "</p>\n";
 
 							echo "<p>";
 							echo '<label for="sp_sc_excerpt">' . __( 'Display excerpt', 'post-connector' ) . ':</label>';
 							echo '<select class="widefat" name="sp_sc_excerpt" id="sp_sc_excerpt" >';
-							echo '<option value="true">Yes</option>';
-							echo '<option value="false">No</option>';
+							echo '<option value="true">' . __( 'Yes', 'post-connector' ) . '</option>';
+							echo '<option value="false">' . __( 'No', 'post-connector' ) . '</option>';
 							echo '</select>';
 							echo "</p>\n";
 

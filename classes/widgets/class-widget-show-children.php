@@ -155,24 +155,24 @@ class SP_Widget_Show_Children extends WP_Widget {
 		echo "<p>";
 		echo '<label for="' . $this->get_field_id( 'link' ) . '">' . __( 'Make children clickable', 'post-connector' ) . ':</label>';
 		echo '<select class="widefat" name="' . $this->get_field_name( 'link' ) . '" id="' . $this->get_field_id( 'link' ) . '" >';
-		echo '<option value="true"' . ( ( $instance['link'] == true ) ? ' selected="selected"' : '' ) . '>Yes</option>';
-		echo '<option value="false"' . ( ( $instance['link'] == false ) ? ' selected="selected"' : '' ) . '>No</option>';
+		echo '<option value="true"' . ( ( $instance['link'] == true ) ? ' selected="selected"' : '' ) . '>' . __( 'Yes', 'post-connector' ) . '</option>';
+		echo '<option value="false"' . ( ( $instance['link'] == false ) ? ' selected="selected"' : '' ) . '>' . __( 'No', 'post-connector' ) . '</option>';
 		echo '</select>';
 		echo "</p>\n";
 
 		echo "<p>";
 		echo '<label for="' . $this->get_field_id( 'excerpt' ) . '">' . __( 'Display excerpt', 'post-connector' ) . ':</label>';
 		echo '<select class="widefat" name="' . $this->get_field_name( 'excerpt' ) . '" id="' . $this->get_field_id( 'excerpt' ) . '" >';
-		echo '<option value="true"' . ( ( $instance['excerpt'] == true ) ? ' selected="selected"' : '' ) . '>Yes</option>';
-		echo '<option value="false"' . ( ( $instance['excerpt'] == false ) ? ' selected="selected"' : '' ) . '>No</option>';
+		echo '<option value="true"' . ( ( $instance['excerpt'] == true ) ? ' selected="selected"' : '' ) . '>' . __( 'Yes', 'post-connector' ) . '</option>';
+		echo '<option value="false"' . ( ( $instance['excerpt'] == false ) ? ' selected="selected"' : '' ) . '>' . __( 'No', 'post-connector' ) . '</option>';
 		echo '</select>';
 		echo "</p>\n";
 
 		echo "<p>";
 		echo '<label for="' . $this->get_field_id( 'thumbnail' ) . '">' . __( 'Display thumbnail', 'post-connector' ) . ':</label>';
 		echo '<select class="widefat" name="' . $this->get_field_name( 'thumbnail' ) . '" id="' . $this->get_field_id( 'thumbnail' ) . '" >';
-		echo '<option value="true"' . ( ( $instance['thumbnail'] == true ) ? ' selected="selected"' : '' ) . '>Yes</option>';
-		echo '<option value="false"' . ( ( $instance['thumbnail'] == false ) ? ' selected="selected"' : '' ) . '>No</option>';
+		echo '<option value="true"' . ( ( $instance['thumbnail'] == true ) ? ' selected="selected"' : '' ) . '>' . __( 'Yes', 'post-connector' ) . '</option>';
+		echo '<option value="false"' . ( ( $instance['thumbnail'] == false ) ? ' selected="selected"' : '' ) . '>' . __( 'No', 'post-connector' ) . '</option>';
 		echo '</select>';
 		echo "</p>\n";
 
