@@ -270,10 +270,15 @@ class SP_Meta_Box_Meta {
 		if ( $sp_parent_rest != '' ) {
 			$redirect_url .= '&sp_parent=' . $sp_parent_rest;
 		}
+		
+		// Allow stopping the redirect to the parent page
+		if(apply_filters('pc_redirect_to_parent_after_save', true)) {
 
-		// Redirecting user
-		wp_redirect( $redirect_url );
-		exit;
+			// Redirecting user
+			wp_redirect( $redirect_url );
+			exit;
+			
+		}
 	}
 
 }
