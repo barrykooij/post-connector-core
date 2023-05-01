@@ -107,9 +107,14 @@ class SP_Meta_Box_Manage {
 			 */
 			$url = apply_filters( 'pc_meta_box_manage_add_existing_url', $url, $this->connection );
 
+			$existing_label = "";
+			if ( isset( $child_post_type ) && isset( $child_post_type->labels ) && isset( $child_post_type->labels->singular_name ) ) {
+				$existing_label = $child_post_type->labels->singular_name;
+			}
+
 			echo "<span id='view-post-btn'>";
 			echo "<a href='" . $url . "' class='button'>";
-			printf( __( 'Add existing %s', 'post-connector' ), $child_post_type->labels->singular_name );
+			printf( __( 'Add existing %s', 'post-connector' ), $existing_label );
 			echo "</a>";
 			echo "</span>\n";
 		}
