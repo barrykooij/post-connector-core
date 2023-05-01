@@ -158,11 +158,11 @@ class SP_Admin_Menu {
 			<div class="pc-box">
 				<h3 class="pc-title"><?php _e( 'About the developer', 'post-connector' ); ?></h3>
 
-				<p><?php _e( "Barry has been a WordPress deleveloper for years and is the author of various WordPress plugins.", 'post-connector' ); ?></p>
+				<p><?php _e( "Barry has been a WordPress developer for years and is the author of various WordPress plugins.", 'post-connector' ); ?></p>
 
 				<p><?php _e( "In his free time, Barry likes giving back by contributing various opensource projects. He also likes to visit and speak at WordPress meetups and WordCamps and is the organiser of the Dutch WordPress meetup in Tilburg.", 'post-connector' ); ?></p>
 
-				<p><?php printf( __( "You can follow Barry on Twitter <a href='%s'>here</a>.", 'post-connector' ), 'https://twitter.com/cageNL' ); ?></p>
+				<p><?php printf( __( "You can follow Barry on Twitter <a href='%s' target='_blank'>here</a>.", 'post-connector' ), 'https://twitter.com/barry_kooij' ); ?></p>
 			</div>
 
 		</div>

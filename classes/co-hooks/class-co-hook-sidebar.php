@@ -26,7 +26,7 @@ class SP_Co_Hook_Sidebar extends SP_Hook {
 			<h3 class="pc-title"><?php _e( 'Show a token of your appreciation', 'post-connector' ); ?></h3>
 
 			<p><?php printf( __( "<a href='%s' target='_blank'>Leave a ★★★★★ plugin review on WordPress.org</a>.", 'post-connector' ), 'http://wordpress.org/support/view/plugin-reviews/post-connector?rate=5#postform' ); ?></p>
-			<p><?php printf( __( "<a href='%s' target='_blank'>Tweet about Post Connector</a>.", 'post-connector' ), 'https://twitter.com/intent/tweet?text=Showing%20my%20appreciation%20to%20%40CageNL%20for%20his%20WordPress%20plugin%3A%20Post%20Connector%20-%20check%20it%20out!%20http%3A%2F%2Fwordpress.org%2Fplugins%2Fpost-connector%2F' ); ?></p>
+			<p><?php printf( __( "<a href='%s' target='_blank'>Tweet about Post Connector</a>.", 'post-connector' ), 'https://twitter.com/intent/tweet?text=Showing%20my%20appreciation%20to%20%40barry_kooij%20for%20his%20WordPress%20plugin%3A%20Post%20Connector%20-%20check%20it%20out!%20http%3A%2F%2Fwordpress.org%2Fplugins%2Fpost-connector%2F' ); ?></p>
 			<p><?php printf( __( "Review the plugin on your blog and link to <a href='%s' target='_blank'>the plugin page</a>.", 'post-connector' ), 'https://www.post-connector.com/?utm_source=plugin&utm_medium=link&utm_campaign=show-appreciation' ); ?></p>
 			<p><?php printf( __( "<a href='%s' target='_blank'>Vote 'works' on the WordPress.org plugin page</a>.", 'post-connector' ), 'http://wordpress.org/plugins/post-connector/' ); ?></p>
 
