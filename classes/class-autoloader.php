@@ -1,6 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 class SP_Autoloader {
 
@@ -23,14 +25,16 @@ class SP_Autoloader {
 	 */
 	public function load( $class ) {
 
+
 		// Only autoload Post Connector or Yoast classes
-		if ( 0 === strpos( $class, 'SP_' ) || 0 === strpos( $class, 'PC_Yoast_' ) ) {
+		if ( 0 === strpos( $class, 'SP_' ) ) {
 
 			// String to lower
 			$class = strtolower( $class );
 
 			// Format file name
-			$file_name = 'class-' . str_ireplace( '_', '-', str_ireplace( array( 'SP_', 'PC_Yoast_' ), '', $class ) ) . '.php';
+			$file_name = 'class-' . str_ireplace( '_', '-',
+					str_ireplace( array( 'SP_Yoast_', 'SP_', ), '', $class ) ) . '.php';
 
 			// Full file path
 			$class_path = $this->base_path . 'classes/';
@@ -50,7 +54,7 @@ class SP_Autoloader {
 				$class_path .= 'widgets/';
 			} elseif ( strpos( $class, 'sp_meta_box' ) === 0 ) {
 				$class_path .= 'meta-boxes/';
-			} elseif ( strpos( $class, 'pc_yoast_' ) === 0 ) {
+			} elseif ( strpos( $class, 'sp_yoast' ) === 0 ) {
 				$class_path .= 'license-manager/';
 			}
 
