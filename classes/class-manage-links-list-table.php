@@ -48,12 +48,22 @@ class SP_Manage_Links_List_Table extends WP_List_Table {
 			$child    = get_post_types( array( 'name' => $link->get_child() ), 'object' );
 			$pt_child = array_shift( $child );
 
+			$parent_label = "";
+			if ( isset( $pt_parent ) && isset( $pt_parent->labels ) && isset( $pt_parent->labels->name ) ) {
+				$parent_label = $pt_parent->labels->name;
+			}
+
+			$child_label = "";
+			if ( isset( $pt_child ) && isset( $pt_child->labels ) && isset( $pt_child->labels->name ) ) {
+				$child_label = $pt_child->labels->name;
+			}
+
 			$this->data[] = array(
 				'ID'     => $link->get_id(),
 				'title'  => $link->get_title(),
 				'slug'   => $link->get_slug(),
-				'parent' => $pt_parent->labels->name,
-				'child'  => $pt_child->labels->name
+				'parent' => $parent_label,
+				'child'  => $child_label
 			);
 		}
 
