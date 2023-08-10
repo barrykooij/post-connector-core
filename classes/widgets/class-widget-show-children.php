@@ -62,7 +62,8 @@ class SP_Widget_Show_Children extends WP_Widget {
 		$post_link_manager = new SP_Post_Link_Manager();
 
 		// Generate the widget content
-		$widget_content = $post_link_manager->generate_children_list( $connection->get_slug(), $instance['parent'], $instance['link'], $instance['excerpt'], 'b', $instance['thumbnail'] );
+		$widget_content = $post_link_manager->generate_children_list( $connection->get_slug(), $instance['parent'],
+			$instance['link'], $instance['excerpt'], 'b', $instance['thumbnail'] );
 
 		// Don't ouput the widget if there is no widget content
 		if ( '' == $widget_content ) {
@@ -99,12 +100,14 @@ class SP_Widget_Show_Children extends WP_Widget {
 		wp_nonce_field( 'sp_ajax_sc_gpp', 'sp_widget_child_nonce' );
 
 		echo "<p>";
-		echo '<label for="' . $this->get_field_id( 'title' ) . '">' . __( 'Title', 'post-connector' ) . ':</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'title' ) . '" type="text" name="' . $this->get_field_name( 'title' ) . '" value="' . esc_attr( $instance['title'] ) . '" />';
+		echo '<label for="' . esc_attr( $this->get_field_id( 'title' ) ) . '">' . __( 'Title',
+				'post-connector' ) . ':</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'title' ) ) . '" type="text" name="' . esc_attr( $this->get_field_name( 'title' ) ) . '" value="' . esc_attr( $instance['title'] ) . '" />';
 		echo "</p>\n";
 
 		echo "<p>";
-		echo '<label for="' . $this->get_field_id( 'postlink' ) . '">' . __( 'Post Link', 'post-connector' ) . ':</label>';
+		echo '<label for="' . esc_attr( $this->get_field_id( 'postlink' ) ) . '">' . __( 'Post Link',
+				'post-connector' ) . ':</label>';
 
 		// Get the connections
 		$connection_manager = new SP_Connection_Manager();
@@ -114,12 +117,12 @@ class SP_Widget_Show_Children extends WP_Widget {
 		echo '<option value="0">' . __( 'Select Post Link', 'post-connector' ) . '</option>';
 		if ( count( $links ) > 0 ) {
 			foreach ( $links as $link ) {
-				echo '<option value="' . $link->get_id() . '"';
+				echo '<option value="' . esc_attr( $link->get_id() ) . '"';
 				if ( $link->get_id() == $instance['postlink'] ) {
 					echo ' selected="selected"';
 					$selected_link = $link;
 				}
-				echo '>' . $link->get_title() . '</option>';
+				echo '>' . esc_html( $link->get_title() ) . '</option>';
 			}
 		}
 		echo '</select>';
@@ -140,11 +143,11 @@ class SP_Widget_Show_Children extends WP_Widget {
 			if ( count( $parent_posts ) > 0 ) {
 				echo "<option value='current'>" . __( 'Current page', 'post-connector' ) . "</option>\n";
 				foreach ( $parent_posts as $parent_post ) {
-					echo "<option value='{$parent_post->ID}'";
+					echo "<option value='" . esc_attr( $parent_post->ID ) . "'";
 					if ( $parent_post->ID == $instance['parent'] ) {
 						echo " selected='selected'";
 					}
-					echo ">{$parent_post->post_title}</option>\n";
+					echo ">" . esc_html( $parent_post->post_title ) . "</option>\n";
 				}
 			}
 		}
@@ -153,24 +156,27 @@ class SP_Widget_Show_Children extends WP_Widget {
 		echo "</p>\n";
 
 		echo "<p>";
-		echo '<label for="' . $this->get_field_id( 'link' ) . '">' . __( 'Make children clickable', 'post-connector' ) . ':</label>';
-		echo '<select class="widefat" name="' . $this->get_field_name( 'link' ) . '" id="' . $this->get_field_id( 'link' ) . '" >';
+		echo '<label for="' . esc_attr( $this->get_field_id( 'link' ) ) . '">' . __( 'Make children clickable',
+				'post-connector' ) . ':</label>';
+		echo '<select class="widefat" name="' . esc_attr( $this->get_field_name( 'link' ) ) . '" id="' . esc_attr( $this->get_field_id( 'link' ) ) . '" >';
 		echo '<option value="true"' . ( ( $instance['link'] == true ) ? ' selected="selected"' : '' ) . '>Yes</option>';
 		echo '<option value="false"' . ( ( $instance['link'] == false ) ? ' selected="selected"' : '' ) . '>No</option>';
 		echo '</select>';
 		echo "</p>\n";
 
 		echo "<p>";
-		echo '<label for="' . $this->get_field_id( 'excerpt' ) . '">' . __( 'Display excerpt', 'post-connector' ) . ':</label>';
-		echo '<select class="widefat" name="' . $this->get_field_name( 'excerpt' ) . '" id="' . $this->get_field_id( 'excerpt' ) . '" >';
+		echo '<label for="' . esc_attr( $this->get_field_id( 'excerpt' ) ) . '">' . __( 'Display excerpt',
+				'post-connector' ) . ':</label>';
+		echo '<select class="widefat" name="' . esc_attr( $this->get_field_name( 'excerpt' ) ) . '" id="' . esc_attr( $this->get_field_id( 'excerpt' ) ) . '" >';
 		echo '<option value="true"' . ( ( $instance['excerpt'] == true ) ? ' selected="selected"' : '' ) . '>Yes</option>';
 		echo '<option value="false"' . ( ( $instance['excerpt'] == false ) ? ' selected="selected"' : '' ) . '>No</option>';
 		echo '</select>';
 		echo "</p>\n";
 
 		echo "<p>";
-		echo '<label for="' . $this->get_field_id( 'thumbnail' ) . '">' . __( 'Display thumbnail', 'post-connector' ) . ':</label>';
-		echo '<select class="widefat" name="' . $this->get_field_name( 'thumbnail' ) . '" id="' . $this->get_field_id( 'thumbnail' ) . '" >';
+		echo '<label for="' . esc_attr( $this->get_field_id( 'thumbnail' ) ) . '">' . __( 'Display thumbnail',
+				'post-connector' ) . ':</label>';
+		echo '<select class="widefat" name="' . esc_attr( $this->get_field_name( 'thumbnail' ) ) . '" id="' . esc_attr( $this->get_field_id( 'thumbnail' ) ) . '" >';
 		echo '<option value="true"' . ( ( $instance['thumbnail'] == true ) ? ' selected="selected"' : '' ) . '>Yes</option>';
 		echo '<option value="false"' . ( ( $instance['thumbnail'] == false ) ? ' selected="selected"' : '' ) . '>No</option>';
 		echo '</select>';

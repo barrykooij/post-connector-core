@@ -160,7 +160,7 @@ class SP_Create_Link_List_Table extends WP_List_Table {
 	 */
 	public function column_cb( $item ) {
 		return sprintf(
-				'<input type="checkbox" name="sp_bulk[]" value="%s" />', $item['ID']
+				'<input type="checkbox" name="sp_bulk[]" value="%s" />', esc_attr( $item['ID'] )
 		);
 	}
 

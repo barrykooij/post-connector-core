@@ -276,7 +276,7 @@ class SP_Admin_Menu {
 								<label for="title" class="sp_label"><?php _e( 'Connection Title', 'post-connector' ); ?></label>
 							</th>
 							<td colspan="2" class="nowrap">
-								<input type="text" name="title" value="<?php echo $connection->get_title(); ?>" placeholder="<?php _e( 'Title', 'post-connector' ); ?>" class="widefat mandatory" id="title" />
+								<input type="text" name="title" value="<?php esc_attr_e( $connection->get_title() ); ?>" placeholder="<?php _e( 'Title', 'post-connector' ); ?>" class="widefat mandatory" id="title" />
 
 								<p class="help"><?php _e( 'The title of the connection, can be automatically shown above linked posts.', 'post-connector' ); ?></p>
 							</td>
@@ -286,7 +286,7 @@ class SP_Admin_Menu {
 							<th scope="row">
 								<label for="slug"><?php _e( 'Connection Slug', 'post-connector' ); ?></label></th>
 							<td colspan="2" class="nowrap">
-								<input type="text" name="slug" value="<?php echo $connection->get_slug(); ?>" placeholder="<?php _e( 'Slug', 'post-connector' ); ?>" class="widefat" id="slug"<?php echo( ( isset( $_GET['id'] ) ) ? ' disabled="disabled"' : '' ); ?> />
+								<input type="text" name="slug" value="<?php esc_attr_e( $connection->get_slug() ); ?>" placeholder="<?php _e( 'Slug', 'post-connector' ); ?>" class="widefat" id="slug"<?php echo( ( isset( $_GET['id'] ) ) ? ' disabled="disabled"' : '' ); ?> />
 
 								<p class="help"><?php _e( 'Unique identifier of the connection, will automatically generate if left empty.', 'post-connector' ); ?></p>
 							</td>
